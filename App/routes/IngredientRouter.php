@@ -4,8 +4,8 @@
   require_once("AbstractRouter.php");
 
   class IngredientRouter extends AbstractRouter{
-    public function __construct($app, $type = "ingredient"){
-      $this->app = $app;
+    public function __construct($container, $type = "ingredient"){
+      $this->container = $container;
       $this->type = $type;
     }
   }

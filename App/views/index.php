@@ -1,13 +1,16 @@
 <?php
-  require('../../vendor/autoload.php');
-  require_once('../../Persistence/rb.php');
-  require_once('../routes/IngredientRouter.php');
-  require_once('../routes/RecipeRouter.php');
+  require(__DIR__ . '/../../vendor/autoload.php');
+  require_once(__DIR__ . '/../../Persistence/rb.php');
+  require_once(__DIR__ . '/../routes/IngredientRouter.php');
+  require_once(__DIR__ . '/../routes/RecipeRouter.php');
 
-  R::setup('sqlite:../../Persistence/dbfile.db');
+  R::setup('sqlite:' . __DIR__ . '/../../Persistence/dbfile.db');
+  R::fancyDebug(true);
 
-  $app = new \Slim\App();
+  $config = array('debug' => true);
+  $app = new \Slim\App($config);
   
+  //TODO 1.0 Doesn't workin the url with php localhost.  You will need to use apache2.
   $app->get('/hello/{name}', function($request, $response){
     $name = $request->getAttribute('name');
     $response->getBody()->write("Hello, $name");

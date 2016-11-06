@@ -1,4 +1,4 @@
-i<?php
+<?php
   class Model_Ingredient extends RedBean_SimpleModel{
     public function update(){
       if(!isset($this->bean->name) || !isset($this->bean->amount)){
